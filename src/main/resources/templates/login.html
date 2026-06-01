@@ -14,169 +14,167 @@
       align-items: center;
       font-family: 'Segoe UI', Arial, sans-serif;
     }
-
-    .card-login {
-      width: 420px;
-      border: none;
-      border-radius: 20px;
-      padding: 40px 36px;
-      background: #ffffff;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-    }
-
+    .login-wrapper { width: 460px; }
+    .logo-area { text-align: center; margin-bottom: 24px; }
     .logo-icon {
-      width: 48px;
-      height: 48px;
-      background: #1e3c72;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 12px;
+      width: 52px; height: 52px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 10px;
     }
-
-    .logo-icon i { color: #fff; font-size: 24px; }
-
-    .titulo {
-      font-size: 20px;
-      font-weight: 600;
-      color: #1a2d5a;
-      margin-bottom: 4px;
+    .logo-icon i { color: #fff; font-size: 26px; }
+    .logo-area h1 { color: #fff; font-size: 20px; font-weight: 600; margin: 0; }
+    .logo-area p { color: rgba(255,255,255,0.6); font-size: 13px; margin: 4px 0 0; }
+    .rol-tabs {
+      display: flex; background: rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 4px; margin-bottom: 20px; gap: 4px;
     }
-
-    .subtitulo {
-      font-size: 13px;
-      color: #8a9ab5;
-      margin-bottom: 28px;
+    .rol-tab {
+      flex: 1; padding: 9px 6px; border-radius: 9px; border: none;
+      background: transparent; color: rgba(255,255,255,0.6);
+      font-size: 13px; font-weight: 500; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      transition: all 0.2s;
     }
-
-    .form-label {
-      font-size: 13px;
-      font-weight: 500;
-      color: #4a5568;
-      margin-bottom: 6px;
+    .rol-tab i { font-size: 18px; }
+    .rol-tab.active { background: #fff; color: #1e3c72; }
+    .card-login {
+      border: none; border-radius: 18px; padding: 32px;
+      background: #fff; box-shadow: 0 20px 60px rgba(0,0,0,0.25);
     }
-
+    .rol-titulo {
+      font-size: 15px; font-weight: 600; color: #1a2d5a;
+      margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+    }
+    .rol-titulo i { font-size: 18px; }
+    .form-label { font-size: 13px; font-weight: 500; color: #4a5568; margin-bottom: 6px; }
     .input-group-text {
-      background: #f7f9fc;
-      border-right: none;
-      border-color: #dde2ec;
-      color: #8a9ab5;
+      background: #f7f9fc; border-right: none;
+      border-color: #dde2ec; color: #8a9ab5;
     }
-
     .form-control {
-      border-left: none;
-      border-color: #dde2ec;
-      background: #f7f9fc;
-      font-size: 14px;
-      padding: 10px 14px;
+      border-left: none; border-color: #dde2ec;
+      background: #f7f9fc; font-size: 14px; padding: 10px 14px;
     }
-
     .form-control:focus {
       border-color: #2a5298;
-      box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.12);
-      background: #fff;
+      box-shadow: 0 0 0 3px rgba(42,82,152,0.12); background: #fff;
     }
-
-    .input-group:focus-within .input-group-text {
-      border-color: #2a5298;
-      background: #fff;
-    }
-
+    .input-group:focus-within .input-group-text { border-color: #2a5298; background: #fff; }
     .btn-login {
-      width: 100%;
-      border-radius: 10px;
-      padding: 11px;
-      font-size: 15px;
-      font-weight: 500;
-      background: #1e3c72;
-      border: none;
-      letter-spacing: 0.02em;
-      transition: background 0.2s, transform 0.1s;
+      width: 100%; border-radius: 10px; padding: 11px;
+      font-size: 15px; font-weight: 500; border: none;
+      letter-spacing: 0.02em; transition: background 0.2s, transform 0.1s;
     }
-
-    .btn-login:hover { background: #2a5298; }
+    .btn-login:hover { filter: brightness(1.1); }
     .btn-login:active { transform: scale(0.98); }
-
-    .alerta-error {
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 13px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .alerta {
+      border-radius: 10px; padding: 10px 14px; font-size: 13px;
+      margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
     }
-
-    .link-ayuda {
-      font-size: 12px;
-      color: #8a9ab5;
-      text-align: center;
-      margin-top: 14px;
-    }
-
-    .link-ayuda a {
-      color: #2a5298;
-      text-decoration: none;
-    }
+    .color-admin      { color: #1e3c72; }
+    .color-docente    { color: #2e7d32; }
+    .color-estudiante { color: #e65100; }
+    .bg-admin      { background: #1e3c72; color: #fff; }
+    .bg-docente    { background: #2e7d32; color: #fff; }
+    .bg-estudiante { background: #e65100; color: #fff; }
   </style>
 </head>
 <body>
 
-<div class="card card-login">
+<div class="login-wrapper">
 
-  <div class="logo-icon">
-    <i class="ti ti-school"></i>
-  </div>
-  <h2 class="titulo">Sistema Académico</h2>
-  <p class="subtitulo">Ingrese sus credenciales para continuar</p>
-
-  <div class="alerta-error" th:if="${param.error}"
-       style="background:#fff0f0; border:1px solid #ffcccc; color:#c0392b;">
-    <i class="ti ti-alert-circle" style="font-size:16px"></i>
-    Usuario o contraseña incorrectos.
+  <div class="logo-area">
+    <div class="logo-icon"><i class="ti ti-school"></i></div>
+    <h1>Sistema Académico</h1>
+    <p>Seleccione su perfil e ingrese sus credenciales</p>
   </div>
 
-  <div class="alerta-error" th:if="${param.logout}"
-       style="background:#f0fff4; border:1px solid #b2dfdb; color:#1b5e20;">
-    <i class="ti ti-circle-check" style="font-size:16px"></i>
-    Sesión cerrada correctamente.
-  </div>
-
-  <form th:action="@{/login}" method="post">
-
-    <div class="mb-3">
-      <label class="form-label">Usuario</label>
-      <div class="input-group">
-        <span class="input-group-text">
-          <i class="ti ti-user" style="font-size:16px"></i>
-        </span>
-        <input type="text" name="username" class="form-control"
-               placeholder="Ingrese su usuario" required>
-      </div>
-    </div>
-
-    <div class="mb-4">
-      <label class="form-label">Contraseña</label>
-      <div class="input-group">
-        <span class="input-group-text">
-          <i class="ti ti-lock" style="font-size:16px"></i>
-        </span>
-        <input type="password" name="password" class="form-control"
-               placeholder="Ingrese su contraseña" required>
-      </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary btn-login">
-      <i class="ti ti-login" style="font-size:16px; vertical-align:-2px; margin-right:6px"></i>
-      Ingresar
+  <div class="rol-tabs">
+    <button class="rol-tab active" id="tab-admin" onclick="cambiarRol('admin')">
+      <i class="ti ti-shield"></i>
+      Administrador
     </button>
+    <button class="rol-tab" id="tab-docente" onclick="cambiarRol('docente')">
+      <i class="ti ti-chalkboard"></i>
+      Docente
+    </button>
+    <button class="rol-tab" id="tab-estudiante" onclick="cambiarRol('estudiante')">
+      <i class="ti ti-school"></i>
+      Estudiante
+    </button>
+  </div>
 
-    <p class="link-ayuda">¿Problemas para ingresar? <a href="#">Contacte al administrador</a></p>
+  <div class="card-login">
 
-  </form>
+    <div class="rol-titulo" id="rol-titulo">
+      <i class="ti ti-shield color-admin"></i>
+      <span class="color-admin">Acceso Administrador</span>
+    </div>
 
+    <div class="alerta" th:if="${param.error}"
+         style="background:#fff0f0; border:1px solid #ffcccc; color:#c0392b;">
+      <i class="ti ti-alert-circle" style="font-size:16px"></i>
+      Usuario o contraseña incorrectos.
+    </div>
+
+    <div class="alerta" th:if="${param.logout}"
+         style="background:#f0fff4; border:1px solid #b2dfdb; color:#1b5e20;">
+      <i class="ti ti-circle-check" style="font-size:16px"></i>
+      Sesión cerrada correctamente.
+    </div>
+
+    <form th:action="@{/login}" method="post">
+      <div class="mb-3">
+        <label class="form-label">Usuario</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="ti ti-user" style="font-size:16px"></i></span>
+          <input type="text" name="username" class="form-control"
+                 placeholder="Ingrese su usuario" required>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="form-label">Contraseña</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="ti ti-lock" style="font-size:16px"></i></span>
+          <input type="password" name="password" class="form-control"
+                 placeholder="Ingrese su contraseña" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-login bg-admin" id="btn-login">
+        <i class="ti ti-login" style="font-size:16px; vertical-align:-2px; margin-right:6px"></i>
+        Ingresar
+      </button>
+    </form>
+
+  </div>
 </div>
+
+<script>
+  const config = {
+    admin: {
+      titulo: '<i class="ti ti-shield color-admin"></i><span class="color-admin">Acceso Administrador</span>',
+      btnClass: 'bg-admin'
+    },
+    docente: {
+      titulo: '<i class="ti ti-chalkboard color-docente"></i><span class="color-docente">Acceso Docente</span>',
+      btnClass: 'bg-docente'
+    },
+    estudiante: {
+      titulo: '<i class="ti ti-school color-estudiante"></i><span class="color-estudiante">Acceso Estudiante</span>',
+      btnClass: 'bg-estudiante'
+    }
+  };
+
+  function cambiarRol(rol) {
+    document.querySelectorAll('.rol-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + rol).classList.add('active');
+    document.getElementById('rol-titulo').innerHTML = config[rol].titulo;
+    const btn = document.getElementById('btn-login');
+    btn.className = 'btn btn-login ' + config[rol].btnClass;
+  }
+</script>
 
 </body>
 </html>

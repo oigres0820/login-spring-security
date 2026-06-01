@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Estudiante - Notas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    body { background: #f4f6fb; font-family: 'Segoe UI', Arial, sans-serif; }
+    .navbar { background: #e65100; padding: 12px 24px; box-shadow: 0 2px 12px rgba(230,81,0,0.18); }
+    .navbar-brand-text { color: #fff; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+    .navbar-brand-text i { font-size: 22px; }
+    .btn-cerrar { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; font-size: 13px; padding: 7px 16px; display: flex; align-items: center; gap: 6px; text-decoration: none; }
+    .sidebar { width: 220px; min-height: calc(100vh - 56px); background: #fff; border-right: 0.5px solid #e2e8f0; padding: 24px 0; position: fixed; top: 56px; }
+    .sidebar a { display: flex; align-items: center; gap: 10px; padding: 10px 24px; font-size: 14px; color: #4a5568; text-decoration: none; transition: background 0.15s; }
+    .sidebar a:hover, .sidebar a.active { background: #fff3e0; color: #e65100; font-weight: 500; }
+    .sidebar a i { font-size: 18px; }
+    .main { margin-left: 220px; padding: 32px; }
+    .card-corte { background: #fff; border-radius: 14px; padding: 24px; border: 0.5px solid #e2e8f0; box-shadow: 0 2px 12px rgba(230,81,0,0.06); margin-bottom: 16px; }
+    .corte-titulo { font-size: 14px; font-weight: 600; color: #1a2d5a; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .corte-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: #fff3e0; color: #e65100; }
+    .nota-item { background: #f7f9fc; border-radius: 10px; padding: 14px 18px; border: 0.5px solid #e2e8f0; }
+    .nota-item .label { font-size: 11px; color: #8a9ab5; margin-bottom: 4px; }
+    .nota-item .valor { font-size: 20px; font-weight: 700; color: #1a2d5a; margin: 0; }
+    .definitiva-corte { background: #fff3e0; border-radius: 10px; padding: 14px 18px; border: 0.5px solid #ffccaa; margin-top: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .definitiva-corte span { font-size: 13px; color: #e65100; font-weight: 500; }
+    .definitiva-corte strong { font-size: 20px; color: #bf360c; }
+    .card-final { background: #1a2d5a; border-radius: 14px; padding: 24px; display: flex; justify-content: space-between; align-items: center; }
+    .card-final .label { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 4px; }
+    .card-final .valor { font-size: 36px; font-weight: 700; color: #fff; margin: 0; }
+    .aprobado { color: #69f0ae; }
+    .reprobado { color: #ff5252; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark">
+  <div class="container-fluid px-0">
+    <span class="navbar-brand-text"><i class="ti ti-school"></i> Sistema Académico</span>
+    <a th:href="@{/logout}" class="btn-cerrar"><i class="ti ti-logout" style="font-size:15px"></i> Cerrar sesión</a>
+  </div>
+</nav>
+
+<div class="sidebar">
+  <a th:href="@{/estudiante/inicio}"><i class="ti ti-layout-dashboard"></i> Inicio</a>
+  <a th:href="@{/estudiante/materias}" class="active"><i class="ti ti-book"></i> Mis materias</a>
+</div>
+
+<div class="main">
+
+  <div class="d-flex align-items-center gap-2 mb-4">
+    <a th:href="@{/estudiante/materias}" style="color:#8a9ab5; text-decoration:none; font-size:13px;">
+      <i class="ti ti-arrow-left" style="font-size:15px; vertical-align:-2px"></i> Volver
+    </a>
+    <span style="color:#dde2ec">/</span>
+    <span style="font-size:13px; color:#1a2d5a; font-weight:500" th:text="${materia.nombreMateria}"></span>
+  </div>
+
+  <!-- CORTE 1 -->
+  <div class="card-corte">
+    <div class="corte-titulo">
+      <i class="ti ti-clipboard-list" style="font-size:16px; color:#e65100"></i>
+      Corte 1 <span class="corte-badge">33%</span>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="nota-item">
+          <p class="label">Parcial (60%)</p>
+          <p class="valor" th:text="${corte1.parcial != null ? corte1.parcial : '—'}"></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="nota-item">
+          <p class="label">Actividades (30%)</p>
+          <p class="valor" th:text="${corte1.actividades != null ? corte1.actividades : '—'}"></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="nota-item">
+          <p class="label">Autoevaluación (10%)</p>
+          <p class="valor" th:text="${corte1.autoevaluacion != null ? corte1.autoevaluacion : '—'}"></p>
+        </div>
+      </div>
+    </div>
+    <div class="definitiva-corte">
+      <span>Definitiva Corte 1</span>
+      <strong th:if="${corte1.definitiva != null}" th:text="${corte1.definitiva}"></strong>
+      <strong th:if="${corte1.definitiva == null}" style="color:#8a9ab5; font-size:14px;">Sin registrar</strong>
+    </div>
+  </div>
+
+  <!-- CORTE 2 -->
+  <div class="card-corte">
+    <div class="corte-titulo">
+      <i class="ti ti-clipboard-list" style="font-size:16px; color:#e65100"></i>
+      Corte 2 <span class="corte-badge">33%</span>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="nota-item">
+          <p class="label">Parcial (60%)</p>
+          <p class="valor" th:text="${corte2.parcial != null ? corte2.parcial : '—'}"></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="nota-item">
+          <p class="label">Actividades (30%)</p>
+          <p class="valor" th:text="${corte2.actividades != null ? corte2.actividades : '—'}"></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="nota-item">
+          <p class="label">Autoevaluación (10%)</p>
+          <p class="valor" th:text="${corte2.autoevaluacion != null ? corte2.autoevaluacion : '—'}"></p>
+        </div>
+      </div>
+    </div>
+    <div class="definitiva-corte">
+      <span>Definitiva Corte 2</span>
+      <strong th:if="${corte2.definitiva != null}" th:text="${corte2.definitiva}"></strong>
+      <strong th:if="${corte2.definitiva == null}" style="color:#8a9ab5; font-size:14px;">Sin registrar</strong>
+    </div>
+  </div>
+
+  <!-- CORTE 3 -->
+  <div class="card-corte">
+    <div class="corte-titulo">
+      <i class="ti ti-clipboard-list" style="font-size:16px; color:#e65100"></i>
+      Corte 3 <span class="corte-badge">34%</span>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="nota-item">
+          <p class="label">Parcial (60%)</p>
+          <p class="valor" th:text="${corte3.parcial != null ? corte3.parcial : '—'}"></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="nota-item">
+          <p class="label">Actividades (30%)</p>
+          <p class="valor" th:text="${corte3.actividades != null ? corte3.actividades : '—'}"></p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="nota-item">
+          <p class="label">Autoevaluación (10%)</p>
+          <p class="valor" th:text="${corte3.autoevaluacion != null ? corte3.autoevaluacion : '—'}"></p>
+        </div>
+      </div>
+    </div>
+    <div class="definitiva-corte">
+      <span>Definitiva Corte 3</span>
+      <strong th:if="${corte3.definitiva != null}" th:text="${corte3.definitiva}"></strong>
+      <strong th:if="${corte3.definitiva == null}" style="color:#8a9ab5; font-size:14px;">Sin registrar</strong>
+    </div>
+  </div>
+
+  <!-- DEFINITIVA FINAL -->
+  <div class="card-final">
+    <div>
+      <p class="label">Definitiva Final</p>
+      <p class="valor" th:if="${definitivaFinal > 0}" th:text="${definitivaFinal}"></p>
+      <p class="valor" th:if="${definitivaFinal == 0}"
+         style="font-size:18px; color:rgba(255,255,255,0.5);">Sin notas</p>
+    </div>
+    <div style="text-align:right">
+      <p class="label">Estado</p>
+      <p class="mb-0" th:if="${definitivaFinal > 0}"
+         style="font-size:18px; font-weight:700;"
+         th:classappend="${definitivaFinal >= 3.0 ? 'aprobado' : 'reprobado'}"
+         th:text="${definitivaFinal >= 3.0 ? 'APROBADO' : 'REPROBADO'}"></p>
+      <p class="mb-0" th:if="${definitivaFinal == 0}"
+         style="font-size:14px; color:rgba(255,255,255,0.5);">—</p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
